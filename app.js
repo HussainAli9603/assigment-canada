@@ -38,7 +38,7 @@ app.get('/', function (req, res) {
   res.render('login')
 });
 app.get('/web-banking', function (req, res) {
-  console.log(req.session)
+  console.log(req.session.user.u_name)
   if (req.session && req.session.user && req.session.user.u_name) {
     res.render('banking', {
       user: {
@@ -50,32 +50,43 @@ app.get('/web-banking', function (req, res) {
   }
 });
 
-app.post('/login', function (req, res) {
-  var username = req.body.username;
-  var password = req.body.password;
-
+app.post('/login', async (req, res) => {
   let errors = [];
+  let username;
+  const user = await User.user.filter(x => x.username === req.body.username)
 
-  if (User.user[0].username != req.body.username) {
+  if (user.length === 0) {
     errors.push({ message: 'Not a registered username' });
-  }
-  if (User.user[0].password != req.body.password) {
-    errors.push({ message: 'Invalid password' });
-  }
-  if (errors.length > 0) {
     res.render('login', {
       errors: errors
     })
-  } else {
-    if (req.session) {
-      req.session.user = {
-        u_name: User.user[0].username
+  }
+  else {
+
+    username = User.user.filter(x => x.username === req.body.username)
+    console.log(username[0].password)
+    if (username[0].password === req.body.password) {
+      if (req.session) {
+        req.session.user = {
+          u_name: User.user.find(x => x.username == req.body.username)
+        }
+
+      }
+      req.session.save();
+      res.redirect('/web-banking');
+    } else {
+      errors.push({ message: 'Not a valid password' });
+      if (errors.length > 0) {
+        res.render('login', {
+          errors: errors
+        })
       }
     }
-    req.session.save();
-    res.redirect('/web-banking');
   }
+
+
 });
+
 app.get('/logout', function (req, res) {
   req.session.destroy()
   res.redirect('/')
@@ -86,3 +97,4 @@ app.get('/logout', function (req, res) {
 server.listen(PORT, () => {
   console.log("Server is Listening on port :", PORT);
 });
+
