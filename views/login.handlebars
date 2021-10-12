@@ -53,6 +53,12 @@
 
 	<div id="full">
 		<h4>web Bank Login</h4>
+			{{#each errors}}
+		<div class="alert alert-danger" style="background-color: wheat;">
+			{{message}}
+		</div>
+		{{/each}}
+		<br>
 		<form action="/login" method="post">
 			<label for="fname">Username</label>
 			<input type="text" id="fname" name="username" placeholder="Your username..">
