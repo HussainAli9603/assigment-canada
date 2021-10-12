@@ -1,63 +1,68 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
+<style>
+	input[type=text],
+	select {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
 
-<head>
-	<title>User Login</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	input[type=password],
+	select {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
 
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+	input[type=submit] {
+		width: 100%;
+		background-color: #4CAF50;
+		color: white;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+	}
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	input[type=submit]:hover {
+		background-color: #45a049;
+	}
 
-	<link rel="stylesheet" href="/style.css">
+	div {
+		border-radius: 5px;
+		background-color: #f2f2f2;
+		padding: 20px;
+	}
 
-</head>
+	#full {
+		margin: 223px;
+	}
+</style>
 
 <body>
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6 col-lg-4">
-					<div class="login-wrap py-5">
-						<div class="img d-flex align-items-center justify-content-center"
-							style="background-image: url(images/bg.jpg);"></div>
-						<h3 class="text-center mb-0">Welcome</h3>
-						<p class="text-center">Sign in by entering the information below</p>
-						{{#each errors}}
-						<div class="alert alert-danger">
-							{{message}}
-						</div>
-						{{/each}}
-						<form action="/login" method="post" class="login-form">
-							<div class="form-group">
-								<div class="icon d-flex align-items-center justify-content-center"><span
-										class="fa fa-user"></span></div>
-								<input type="text" name="username" class="form-control" placeholder="Username" required>
-							</div>
-							<div class="form-group">
-								<div class="icon d-flex align-items-center justify-content-center"><span
-										class="fa fa-lock"></span></div>
-								<input type="password" name="password" class="form-control" placeholder="Password"
-									required>
-							</div>
 
-							<div class="form-group">
-								<button type="submit"
-									class="btn form-control btn-primary rounded submit px-3">Login</button>
-							</div>
-						</form>
+	<div id="full">
+		<h4>web Bank Login</h4>
+		<form action="/login" method="post">
+			<label for="fname">Username</label>
+			<input type="text" id="fname" name="username" placeholder="Your username..">
 
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+			<label for="lname">Password</label>
+			<input type="password" id="lname" name="password" placeholder="Your Password..">
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/popper.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
+			<input type="submit" value="Submit">
+		</form>
+	</div>
 
 </body>
 
