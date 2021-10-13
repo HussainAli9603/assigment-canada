@@ -1,12 +1,20 @@
 {
 "user":[
 	{
-    "username":"user@gmail.com",
-    "password":"user"
-       },
-       {
-      "username": "user2@gmail.com",
-      "password": "user2"
+    "username":"george.tsang@sensecacollege.ca",
+    "password":"web322nla"
+    },
+    {
+     "username": "json@beatles.uk",
+     "password": "lennonj!"
+    },
+    {
+     "username": "paul@beatles.uk",
+     "password": "mccartney"
+    },
+    {
+     "username": "mick@rollingstone.uk.uk",
+     "password": "jaggerm!"
     }
   ]
 }
