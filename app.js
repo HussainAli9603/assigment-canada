@@ -18,6 +18,10 @@ app.use(express.static(__dirname + '/public', { maxAge: '30 days' }));
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.use(express.json())
+app.use(bodyParser.json());
+// for parsing application/xwww-
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 
 app.get('/', function (req, res) {
